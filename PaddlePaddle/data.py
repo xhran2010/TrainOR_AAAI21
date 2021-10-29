@@ -137,5 +137,9 @@ class DataExc(object):
         users_batch = self.users[i * batch_size: (i + 1) * batch_size]
         return ori_batch, dst_batch, users_batch
         
-    def batch_num(self, batch_size):   
-        return int(len(self.ori) / batch_size) + 1
+    def batch_num(self, batch_size):
+        assert len(self.ori) >= batch_size, "the batch size should be not greater than the set length!"
+        if len(self.ori) % batch_size == 0:
+            return int(len(self.ori) / batch_size)
+        else:
+            return int(len(self.ori) / batch_size) + 1

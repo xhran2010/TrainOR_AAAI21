@@ -94,8 +94,8 @@ def test(model, model_path, test_exc, args, logger):
         rec30_list.append(recall_30)
 
     logger.log("Average Test Loss %.10f" % (test_loss_sum / n_test_batch))
-    logger.log("Rec@10:%5.3f, Rec@20: %5.3f, Rec@30: %5.3f, MAP: %5.3f" % \
-        (np.mean(rec10_list), np.mean(rec20_list), np.mean(rec30_list), np.mean(map_list)))
+    logger.log("Rec@10:%5.3f, Rec@20: %5.3f, Rec@30: %5.3f" % \
+        (np.mean(rec10_list), np.mean(rec20_list), np.mean(rec30_list)))
 
 def main():
     parser = argparse.ArgumentParser()
@@ -105,9 +105,9 @@ def main():
     parser.add_argument('--save_path', type=str, help="the model save path", required=True)
     parser.add_argument('--test_path', type=str, help="only useful when mode is test")
     parser.add_argument('--mode', type=str, default='train')
-    parser.add_argument('--train_batch_size', type=int, default=1000)
+    parser.add_argument('--train_batch_size', type=int, default=100)
     parser.add_argument('--save_step', type=int, default=1)
-    parser.add_argument('--test_batch_size', type=int, default=100)
+    parser.add_argument('--test_batch_size', type=int, default=10)
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--hidden_size', type=int, default=128)
     parser.add_argument('--sample_size', type=int, default=1000)
