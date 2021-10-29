@@ -1,7 +1,12 @@
 # TrainOR_AAAI21
-This is the official PaddlePaddle implementation of our AAAI'21 paper:
+This is the official implementation of our AAAI'21 paper:
 
 >Haoran Xin, Xinjiang Lu, Tong Xu, Hao Liu, Jingjing Gu, Dejing Dou, Hui Xiong, **Out-of-Town Recommendation with Travel Intention Modeling**, In Proceedings of the Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI’21), Online, 2021, 4529-4536.
+
+both PaddlePaddle and Pytorch versions included.
+> PaddlePaddle: https://www.paddlepaddle.org.cn \
+Pytorch: https://pytorch.org
+
 
 If you use our codes in your research, please cite:
 ```
@@ -18,7 +23,7 @@ If you use our codes in your research, please cite:
 
 ## Requirements
 - Python 3.x
-- Paddlepaddle 2.x
+- Paddlepaddle 2.x / Pytorch >= 1.7
 
 ## Data Format
 For check-in data, you need to format the hometown and out-of-town check-ins of users in two respective files following:
