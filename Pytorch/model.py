@@ -260,7 +260,7 @@ class TRAINOR(nn.Module):
         dst_preference_hat = self.mlp(ori_preference)
         dst_poi_emb = self.gcn(self.dst_poi_embedding.weight, self.graph)
 
-        dst_alpha = torch.softmax(torch.matmul(self.linear_dst_w1(dst_memory), dst_preference_hat.unsqueeze(2)), dim=-2)
+        dst_alpha = torch.softmax(torch.matmul(self.linear_dst_w1(dst_memory), ori_preference.unsqueeze(2)), dim=-2)
         dst_intent = torch.matmul(dst_alpha.transpose(1, 2), dst_memory).squeeze(1)
 
         pred = torch.matmul(self.d_u_fusion(torch.cat([dst_intent, dst_preference_hat], dim=-1)), dst_poi_emb.transpose(0,1)) # B x M (test)

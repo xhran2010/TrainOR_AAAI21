@@ -249,7 +249,7 @@ class TRAINOR(nn.Layer):
         dst_preference_hat = self.mlp(ori_preference)
         dst_poi_emb = self.gcn(self.dst_poi_embedding.weight, self.graph)
 
-        dst_alpha = F.softmax(paddle.matmul(self.linear_dst_w1(dst_memory), dst_preference_hat.unsqueeze(2)), axis=-2)
+        dst_alpha = F.softmax(paddle.matmul(self.linear_dst_w1(dst_memory), ori_preference.unsqueeze(2)), axis=-2)
         dst_intent = paddle.matmul(dst_alpha.transpose([0,2,1]), dst_memory).squeeze(1)
 
         pred = paddle.matmul(self.d_u_fusion(paddle.concat([dst_intent, dst_preference_hat], axis=-1)), dst_poi_emb.transpose([1,0])) # B x M (test)
